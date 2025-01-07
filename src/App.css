@@ -1,63 +1,98 @@
+/* 页面整体布局 */
 .app-container {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
+/* 网格布局 */
 .grid {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px; /* 行间距 */
 }
 
 .grid-row {
   display: flex;
-  margin-bottom: 8px; /* 给行之间增加一点间距 */
 }
 
+/* 格子样式 */
 .grid-cell {
-  width: 30px; /* 格子宽度 */
-  height: 30px; /* 格子高度 */
+  width: 40px; /* 格子宽度（移动端适配） */
+  height: 40px; /* 格子高度（移动端适配） */
   text-align: center;
   border: 1px solid red; /* 红色边框 */
-  margin: 0; /* 去掉格子间的间隙 */
+  margin: 0;
   font-size: 20px;
-  line-height: 30px;
+  line-height: 40px;
   outline: none;
   background-color: #fff;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .grid-cell:focus {
-  background-color: #f0f0f0;
+  background-color: #ffe6e6; /* 聚焦时更明显 */
+  border-color: #ff4d4d; /* 聚焦边框颜色 */
 }
 
+/* 按钮布局 */
 .buttons {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 button {
-  padding: 8px 16px;
-  margin: 5px;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
   background-color: #4caf50;
   color: white;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #45a049;
 }
 
+/* 控制行数选择 */
 .controls {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 #row-selector {
-  margin-left: 10px;
-  padding: 5px;
+  padding: 8px 12px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 响应式支持 */
+@media (max-width: 600px) {
+  .grid-cell {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  #row-selector {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
 }
