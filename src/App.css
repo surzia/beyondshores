@@ -5,6 +5,7 @@
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  overflow-x: hidden; /* 防止页面整体水平滚动 */
 }
 
 /* 网格布局 */
@@ -12,30 +13,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px; /* 行间距 */
+  overflow-x: auto; /* 添加水平滚动条 */
+  white-space: nowrap; /* 避免内容自动换行 */
 }
 
 .grid-row {
   display: flex;
+  flex-wrap: nowrap; /* 禁止单行换行 */
+  justify-content: center; /* 居中对齐 */
 }
 
 /* 格子样式 */
 .grid-cell {
-  width: 40px; /* 格子宽度（移动端适配） */
-  height: 40px; /* 格子高度（移动端适配） */
+  width: 6vw; /* 动态宽度：根据屏幕宽度自适应 */
+  max-width: 40px; /* 最大宽度 */
+  min-width: 30px; /* 最小宽度 */
+  height: 6vw; /* 动态高度，保持正方形 */
+  max-height: 40px; /* 最大高度 */
+  min-height: 30px; /* 最小高度 */
   text-align: center;
-  border: 1px solid red; /* 红色边框 */
+  border: 1px solid red;
   margin: 0;
-  font-size: 20px;
-  line-height: 40px;
+  font-size: 4vw; /* 字号动态调整 */
+  line-height: 6vw;
   outline: none;
   background-color: #fff;
   transition: background-color 0.2s, border-color 0.2s;
 }
 
 .grid-cell:focus {
-  background-color: #ffe6e6; /* 聚焦时更明显 */
-  border-color: #ff4d4d; /* 聚焦边框颜色 */
+  background-color: #ffe6e6;
+  border-color: #ff4d4d;
 }
 
 /* 按钮布局 */
@@ -80,19 +88,6 @@ button:hover {
 /* 响应式支持 */
 @media (max-width: 600px) {
   .grid-cell {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-    line-height: 30px;
-  }
-
-  button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  #row-selector {
-    font-size: 14px;
-    padding: 6px 10px;
+    font-size: 3.5vw; /* 进一步缩小字体 */
   }
 }
